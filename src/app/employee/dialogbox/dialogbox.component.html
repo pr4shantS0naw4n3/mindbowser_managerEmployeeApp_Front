@@ -1,0 +1,33 @@
+<h1>{{data.method | uppercase }}</h1>
+<form [formGroup]="form" (ngSubmit)="aoru()">
+  <mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstName">
+    <mat-error *ngIf="form.controls['firstName'].invalid">
+      Please Enter Valid First Name
+    </mat-error>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName">
+    <mat-error *ngIf="form.controls['lastName'].invalid">
+      Please Enter Valid Last Name
+    </mat-error>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="example@domain.com" formControlName="email">
+    <mat-error *ngIf="form.controls['email'].invalid">
+      Please Enter Valid Email Id
+    </mat-error>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Phone Number</mat-label>
+    <input matInput autocomplete="off" formControlName="phone_number">
+    <mat-error *ngIf="form.controls['phone_number'].invalid">
+      Please Enter Valid Phone Number
+    </mat-error>
+  </mat-form-field><br>
+  <button [disabled]="form.invalid" type="submit" mat-raised-button
+    color="warn">{{data.method | uppercase}}</button>&nbsp;
+</form>
