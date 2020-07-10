@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   signinForm = new FormGroup({
-    name: new FormControl('', [
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z ]+$/)
+    ]),
+    lastName: new FormControl('', [
       Validators.required,
       Validators.pattern(/^[a-zA-Z ]+$/)
     ]),
@@ -21,6 +25,13 @@ export class RegisterComponent implements OnInit {
     ]),
     password: new FormControl('', [
       Validators.required,
+    ]),
+    dob: new FormControl('', [
+      Validators.required
+    ]),
+    company: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z0-9 ]+$/)
     ]),
   })
   constructor(

@@ -5,10 +5,31 @@
     </mat-card-header>
     <form [formGroup]="signinForm" class=" signup-form" (ngSubmit)="register()">
       <mat-form-field class="signup-full-width">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
-        <mat-error *ngIf="signinForm.controls['name'].invalid">
-          Please Enter Valid Name
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName">
+        <mat-error *ngIf="signinForm.controls['firstName'].invalid">
+          Please Enter Valid First Name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="signup-full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName">
+        <mat-error *ngIf="signinForm.controls['lastName'].invalid">
+          Please Enter Valid Last Name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="signup-full-width">
+        <mat-label>DOB</mat-label>
+        <input matInput type="date" formControlName="dob">
+        <mat-error *ngIf="signinForm.controls['dob'].invalid">
+          Please Enter Valid Date
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="signup-full-width">
+        <mat-label>Company</mat-label>
+        <input matInput formControlName="company">
+        <mat-error *ngIf="signinForm.controls['company'].invalid">
+          Please Enter Valid Company Name
         </mat-error>
       </mat-form-field>
       <mat-form-field class="signup-full-width">

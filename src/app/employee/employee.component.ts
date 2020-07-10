@@ -1,7 +1,7 @@
 import { DialogboxComponent } from './dialogbox/dialogbox.component';
 import { ApiService } from './../api.service';
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
@@ -13,12 +13,17 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 export class EmployeeComponent implements OnInit {
 
   empList: MatTableDataSource<any>;
-  displayedColumns: string[] = ['EmployeeName', 'emailId', 'phone_number', 'actions']
+  displayedColumns: string[] = ['EmployeefName', 'EmployeelName', 'emailId', 'phone_number', 'address', 'dob', 'city', 'company', 'actions']
+
   constructor(
     private apiservice: ApiService,
     private router: Router,
     public dialog: MatDialog
-  ) { }
+  ) {
+  }
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginate: MatPaginator;
 
   ngOnInit() {
     if (localStorage.getItem('token') !== null) {
@@ -33,6 +38,8 @@ export class EmployeeComponent implements OnInit {
       const data = await res
       if (data.status === 200) {
         this.empList = new MatTableDataSource(data.EmployeeData)
+        this.empList.sort = this.sort
+        this.empList.paginator = this.paginate
       }
     }, (error) => {
       // if (error.status !== 200) {

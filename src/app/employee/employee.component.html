@@ -1,24 +1,56 @@
+<button (click)="add()" style="margin-left: 1160px;margin-top: 80px;" mat-raised-button color="warn">Add
+  Employee</button>&nbsp;
+<button (click)="logout()" mat-raised-button color="warn">Logout</button>
+
 <div class="table-div">
   <table mat-table [dataSource]="empList" class="table-mat" matSort>
-    <ng-container matColumnDef="EmployeeName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Employee Name</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{element.firstName}} {{element.lastName}}</mat-cell>
+    <ng-container matColumnDef="EmployeefName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="firstName">First Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.firstName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="EmployeelName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="lastName">Last Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.lastName}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="emailId">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Employee Email Id</mat-header-cell>
       <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="phone_number">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Employee Contact Info</mat-header-cell>
-      <mat-cell *matCellDef="let element">+91-{{element.phone_number}}</mat-cell>
+      <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Employee Address</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.address}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dob">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>DOB</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.dob|date}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.city}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="company">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Company</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.company}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let element">
+
         <button mat-icon-button (click)="update(element)" title="Update">
           <mat-icon>edit</mat-icon>
         </button>
+
         <button mat-icon-button class="warn-icon" title="delete" (click)="delete(element)">
           <mat-icon>
             delete_outline
@@ -30,9 +62,7 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
-    <!--define ng container with column name loading-->
   </table>
-  <button (click)="add()" style=" margin-left: 691px;" mat-raised-button color="warn">Add Employee</button>&nbsp;
-  <button (click)="logout()" mat-raised-button color="warn">Logout</button>
+  <mat-paginator [length]="100" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5"></mat-paginator>
+
 </div>

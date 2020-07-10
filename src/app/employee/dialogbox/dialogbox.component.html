@@ -7,6 +7,7 @@
       Please Enter Valid First Name
     </mat-error>
   </mat-form-field><br>
+
   <mat-form-field>
     <mat-label>Last Name</mat-label>
     <input matInput formControlName="lastName">
@@ -14,6 +15,47 @@
       Please Enter Valid Last Name
     </mat-error>
   </mat-form-field><br>
+
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address">
+    <mat-error *ngIf="form.controls['address'].invalid">
+      Please Enter Valid Address
+    </mat-error>
+  </mat-form-field><br>
+
+  <mat-form-field class="signup-full-width">
+    <mat-label>City</mat-label>
+    <input matInput formControlName="city">
+    <mat-error *ngIf="form.controls['city'].invalid">
+      Please Enter Valid city
+    </mat-error>
+  </mat-form-field><br>
+
+  <mat-form-field class="signup-full-width">
+    <mat-label>Company</mat-label>
+    <input matInput formControlName="company">
+    <mat-error *ngIf="form.controls['company'].invalid">
+      Please Enter Valid Company Name
+    </mat-error>
+  </mat-form-field><br>
+
+  <mat-form-field class="signup-full-width">
+    <mat-label>DOB</mat-label>
+    <input matInput type="date" formControlName="dob">
+    <mat-error *ngIf="form.controls['dob'].invalid">
+      Please Enter Valid Date
+    </mat-error>
+  </mat-form-field><br>
+
+  <mat-form-field>
+    <mat-label>Mobile</mat-label>
+    <input matInput autocomplete="off" formControlName="mobile">
+    <mat-error *ngIf="form.controls['mobile'].invalid">
+      Please Enter Valid mobile Number
+    </mat-error>
+  </mat-form-field><br>
+
   <mat-form-field>
     <mat-label>Email</mat-label>
     <input matInput placeholder="example@domain.com" formControlName="email">
@@ -21,13 +63,15 @@
       Please Enter Valid Email Id
     </mat-error>
   </mat-form-field><br>
-  <mat-form-field>
-    <mat-label>Phone Number</mat-label>
-    <input matInput autocomplete="off" formControlName="phone_number">
-    <mat-error *ngIf="form.controls['phone_number'].invalid">
-      Please Enter Valid Phone Number
+
+  <mat-form-field class="signup-full-width" *ngIf="data.method==='add'">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" autocomplete="off" formControlName="password">
+    <mat-error *ngIf="form.controls['password'].invalid">
+      Password is required
     </mat-error>
   </mat-form-field><br>
+
   <button [disabled]="form.invalid" type="submit" mat-raised-button
     color="warn">{{data.method | uppercase}}</button>&nbsp;
 </form>
