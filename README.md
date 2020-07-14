@@ -1,4 +1,4 @@
-# Mindbowser Manager Employee Management Application - FRONTEND 
+# Manager Employee Management Application - FRONTEND 
 
 # ANGULAR
 
